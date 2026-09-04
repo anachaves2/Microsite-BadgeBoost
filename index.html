@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Badge Boost — Plataforma de Gestão de Badges da Softinsa.">
+<title>Badge Boost | Softinsa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#07111f;--ink-2:#111c2c;--paper:#f6f7f5;--white:#fff;--muted:#6b7685;
+  --blue:#2563eb;--blue-soft:#eaf1ff;--lime:#d8ff4e;--line:#dce1e7;--line-dark:rgba(255,255,255,.14);
+  --radius:24px;--shadow:0 28px 70px rgba(7,17,31,.11)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,90vw);margin:auto}
+.eyebrow{font:500 .71rem 'DM Mono',monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--blue)}
+.section{padding:115px 0;border-top:1px solid var(--line)}
+h1,h2,h3,h4{font-family:Oswald,Impact,sans-serif;text-transform:uppercase;line-height:.93;letter-spacing:-.02em}
+.section-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:55px}
+.section-title{font-size:clamp(4rem,8vw,7.4rem)}
+.section-copy{max-width:480px;color:var(--muted);line-height:1.75;font-size:1rem}
+
+/* NAV */
+.nav{position:fixed;z-index:50;top:0;width:100%;backdrop-filter:blur(16px);background:rgba(246,247,245,.83);border-bottom:1px solid rgba(220,225,231,.8)}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;font-size:.95rem;letter-spacing:-.04em}.brand b{color:var(--blue)}
+.nav-links{display:flex;gap:25px;font-size:.75rem;font-weight:700;text-transform:uppercase}.nav-links a:hover{color:var(--blue)}
+.nav-tag{font:500 .66rem 'DM Mono';border:1px solid var(--line);padding:8px 11px;border-radius:999px}
+
+/* HERO */
+.hero{min-height:100vh;padding:150px 0 85px;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:55px;align-items:center}
+.hero h1{font-size:clamp(5rem,10vw,9.3rem)}.hero h1 span{color:var(--blue)}
+.hero-copy{max-width:610px;margin:28px 0;color:var(--muted);font-size:1.05rem;line-height:1.78}
+.actions{display:flex;gap:12px;flex-wrap:wrap}.button{display:inline-flex;padding:14px 21px;border-radius:999px;background:var(--ink);color:#fff;font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.button.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}.button:hover{transform:translateY(-2px)}
+.hero-meta{display:flex;gap:30px;margin-top:48px;color:var(--muted);font-size:.72rem}.hero-meta strong{display:block;color:var(--ink);font-size:1rem;margin-top:4px}
+.hero-visual{position:relative;min-height:610px}.grid-bg{position:absolute;inset:0;border-radius:var(--radius);background-image:linear-gradient(#dfe4e9 1px,transparent 1px),linear-gradient(90deg,#dfe4e9 1px,transparent 1px);background-size:46px 46px}
+.mockup{position:absolute;background:#fff;border:1px solid #e2e7ec;box-shadow:var(--shadow);overflow:hidden}.web-shot{width:92%;height:68%;right:0;top:5%;border-radius:20px;padding:17px}.phone{width:39%;height:65%;left:5%;bottom:1%;border-radius:32px;padding:11px;background:#0b1321}.shot-note{height:100%;border:2px dashed #99a4b1;border-radius:14px;background:linear-gradient(135deg,#f8fafc,#edf1f6);display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;color:#64748b;font:500 .76rem/1.65 'DM Mono'}.phone .shot-note{border:0;border-radius:23px;background:#fff}.floating{position:absolute;right:1%;bottom:2%;background:var(--lime);padding:14px 17px;border-radius:16px;font:500 .68rem 'DM Mono';box-shadow:0 15px 40px rgba(7,17,31,.14)}
+
+/* NUMBERS */
+.numbers{background:var(--ink);color:#fff;border-top:0}.number-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}.metric{padding:20px 28px;border-right:1px solid var(--line-dark)}.metric:last-child{border:0}.metric b{display:block;font:700 clamp(2.5rem,5vw,4.7rem) Oswald}.metric span{font-size:.78rem;color:#aeb8c5;line-height:1.5}
+
+/* PROBLEM */
+.problem-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:80px}.lead{font-size:1.12rem;color:var(--muted);line-height:1.76}.pain-list{margin-top:38px}.pain{display:grid;grid-template-columns:62px 1fr;gap:18px;padding:23px 0;border-top:1px solid var(--line)}.pain-no{font:500 .75rem 'DM Mono';color:var(--blue)}.pain h3{font-size:1.46rem;margin-bottom:8px}.pain p{color:var(--muted);line-height:1.6;font-size:.88rem}
+
+/* SOLUTION */
+.solution-intro{display:grid;grid-template-columns:1fr 1fr;gap:65px}.path{margin-top:55px;background:var(--ink);border-radius:var(--radius);padding:28px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;color:#fff}.path-item{min-height:125px;padding:17px;border:1px solid var(--line-dark);border-radius:15px;display:flex;align-items:flex-end;position:relative;font:500 .72rem/1.45 'DM Mono'}.path-item:not(:last-child)::after{content:'→';position:absolute;right:-9px;top:44%;font-size:1.25rem;color:var(--lime);z-index:2}.path-item b{display:block;color:var(--lime);font-size:.63rem;margin-bottom:8px}
+.solution-note{margin-top:22px;color:#aeb8c5;font-size:.75rem;line-height:1.65}
+
+/* PRODUCT */
+.ecosystem{display:grid;grid-template-columns:1fr 1fr;gap:22px}.product{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}.visual-slot{height:390px;padding:20px}.visual-slot.large{height:430px}.photo-placeholder{height:100%;border:2px dashed #98a3b0;border-radius:16px;background:linear-gradient(135deg,#f8fafc,#eef2f7);display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;color:#657182;font:500 .73rem/1.7 'DM Mono'}.product-content{padding:30px}.product h3{font-size:2.45rem}.product p{margin-top:13px;color:var(--muted);line-height:1.7;font-size:.91rem}.product ul{list-style:none;margin-top:20px;display:grid;gap:9px;font-size:.83rem}.product li::before{content:'↗';color:var(--blue);margin-right:8px}
+
+/* WORKFLOW */
+.dark{background:var(--ink);color:#fff}.dark .eyebrow{color:var(--lime)}.workflow-title{font-size:clamp(4rem,8vw,7.3rem);margin:12px 0 55px}.steps{border-top:1px solid var(--line-dark)}.step{display:grid;grid-template-columns:85px 1.05fr 1fr;gap:35px;align-items:center;padding:33px 0;border-bottom:1px solid var(--line-dark)}.step-number{font:500 .75rem 'DM Mono';color:var(--lime)}.step h3{font-size:2rem}.step p{color:#abb6c5;font-size:.89rem;line-height:1.65}.status{display:inline-block;margin-top:10px;padding:5px 9px;border-radius:999px;background:rgba(216,255,78,.11);color:var(--lime);font:500 .61rem 'DM Mono'}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;min-height:245px;transition:.22s}.feature:hover{transform:translateY(-5px);box-shadow:0 22px 45px rgba(7,17,31,.08)}.feature-no{font:500 .69rem 'DM Mono';color:var(--blue)}.feature h3{font-size:1.72rem;margin:38px 0 11px}.feature p{color:var(--muted);font-size:.86rem;line-height:1.65}
+
+/* ROLES */
+.roles{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:20px;overflow:hidden}.role{background:#fff;padding:30px;border-right:1px solid var(--line)}.role:last-child{border:0}.role-code{font:500 .68rem 'DM Mono';color:var(--blue)}.role h3{font-size:1.85rem;margin:48px 0 12px}.role p{color:var(--muted);font-size:.84rem;line-height:1.65}
+
+/* DATA / UX */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px}.info-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px}.info-card h3{font-size:2rem;margin:15px 0}.info-card p{color:var(--muted);line-height:1.7;font-size:.9rem}.info-card ul{list-style:none;margin-top:22px;display:grid;gap:9px}.info-card li{font-size:.82rem}.info-card li::before{content:'•';color:var(--blue);margin-right:10px}
+
+/* PROCESS */
+.process{display:grid;grid-template-columns:repeat(6,1fr);gap:11px}.process-item{background:#fff;border:1px solid var(--line);border-radius:17px;min-height:185px;padding:20px;display:flex;flex-direction:column;justify-content:space-between}.process-item:nth-child(odd){transform:translateY(24px)}.process-item span{font:500 .64rem 'DM Mono';color:var(--blue)}.process-item h3{font-size:1.36rem}.process-item p{color:var(--muted);font-size:.72rem;line-height:1.55}
+
+/* TECH */
+.tech{background:#eaf0ff}.tech-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}.stack{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:35px}.tech-item{background:#fff;border:1px solid rgba(37,99,235,.12);border-radius:16px;padding:22px}.tech-item b{display:block;font:500 .66rem 'DM Mono';color:var(--blue);margin-bottom:9px}.tech-item span{font-size:1.1rem;font-weight:800}.architecture{min-height:460px;background:var(--ink);border-radius:var(--radius);padding:28px;display:flex;align-items:center;justify-content:center}.architecture-inner{width:100%;display:grid;gap:13px}.node{padding:17px;border:1px solid var(--line-dark);border-radius:13px;color:#fff;text-align:center;font:500 .72rem 'DM Mono'}.node.accent{border-color:var(--lime);color:var(--lime)}.arrow{text-align:center;color:var(--lime);font-size:1.1rem}
+
+/* VISUALS */
+.gallery{display:grid;grid-template-columns:1.25fr .75fr .75fr;grid-template-rows:250px 250px;gap:14px}.gallery-item{border-radius:18px;overflow:hidden}.gallery-item.main{grid-row:span 2}.caption{padding:9px 12px;background:#fff;border:1px solid var(--line);font:500 .61rem 'DM Mono';color:var(--blue);text-transform:uppercase}
+
+/* SPECS */
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.spec{background:#fff;border:1px solid var(--line);border-radius:17px;padding:25px}.spec strong{display:block;font:500 .67rem 'DM Mono';color:var(--blue);margin-bottom:13px}.spec h3{font-size:1.5rem;margin-bottom:10px}.spec p{color:var(--muted);font-size:.81rem;line-height:1.65}
+
+/* FOOTER */
+.footer{background:var(--ink);color:#fff;padding:90px 0 30px}.footer-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px}.footer h2{font-size:clamp(4rem,7.5vw,7rem)}.footer h2 span{color:var(--lime)}.footer-copy{margin-top:25px;color:#aeb8c5;line-height:1.72;max-width:560px}.team{display:grid;grid-template-columns:1fr 1fr;margin-top:26px;border:1px solid var(--line-dark);border-radius:15px;overflow:hidden}.member{padding:18px;border-right:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);font-size:.84rem}.member:nth-child(2n){border-right:0}.member:nth-last-child(-n+2){border-bottom:0}.footer-bottom{margin-top:70px;padding-top:19px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;gap:20px;color:#8490a0;font:500 .63rem 'DM Mono';text-transform:uppercase}
+
+@media(max-width:950px){
+ .nav-links{display:none}.hero-grid,.problem-grid,.solution-intro,.tech-grid,.footer-grid{grid-template-columns:1fr}.hero{padding-top:120px}.hero-visual{min-height:520px}.number-grid{grid-template-columns:repeat(2,1fr)}.metric{border-bottom:1px solid var(--line-dark)}.path{grid-template-columns:repeat(3,1fr)}.path-item:nth-child(3n)::after{display:none}.ecosystem{grid-template-columns:1fr}.features-grid{grid-template-columns:repeat(2,1fr)}.roles{grid-template-columns:repeat(2,1fr)}.role:nth-child(2){border-right:0}.role:nth-child(-n+2){border-bottom:1px solid var(--line)}.process{grid-template-columns:repeat(3,1fr)}.gallery{grid-template-columns:1fr 1fr}.gallery-item.main{grid-column:span 2;grid-row:auto;height:320px}.step{grid-template-columns:70px 1fr}.step p{grid-column:2}.spec-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+ .container{width:92vw}.section{padding:78px 0}.section-head{display:block;margin-bottom:36px}.section-copy{margin-top:18px}.hero h1{font-size:4.45rem}.hero-meta{gap:18px;flex-wrap:wrap}.hero-visual{min-height:410px}.web-shot{height:59%;width:100%}.phone{width:47%;height:58%}.floating{font-size:.58rem}.number-grid,.features-grid,.roles,.process,.stack,.spec-grid{grid-template-columns:1fr}.metric{border-right:0}.path{grid-template-columns:1fr 1fr}.path-item::after{display:none!important}.step{grid-template-columns:48px 1fr;gap:15px}.step p{grid-column:2}.step h3{font-size:1.55rem}.gallery{grid-template-columns:1fr}.gallery-item.main{grid-column:auto;height:280px}.split{grid-template-columns:1fr}.process-item:nth-child(odd){transform:none}.role{border-right:0;border-bottom:1px solid var(--line)}.role:last-child{border-bottom:0}.footer-bottom{display:block;line-height:2}.team{grid-template-columns:1fr}.member{border-right:0}.member:nth-last-child(-n+2){border-bottom:1px solid var(--line-dark)}.member:last-child{border-bottom:0}
+}
+</style>
+</head>
+<body id="top">
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top">BADGE<b>BOOST</b></a>
+    <div class="nav-links"><a href="#desafio">Desafio</a><a href="#solucao">Solução</a><a href="#produto">Produto</a><a href="#workflow">Workflow</a><a href="#tecnologia">Tecnologia</a></div>
+    <a class="nav-tag" href="https://frontend-6mpw.onrender.com" target="_blank" rel="noopener" style="border-color:var(--blue);color:var(--blue);font-weight:700">ACEDER À PLATAFORMA ↗</a>
+  </div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Plataforma de Gestão de Badges • Softinsa</p>
+        <h1>BADGES<br>THAT <span>POWER</span><br>TALENT.</h1>
+        <p class="hero-copy">Uma plataforma digital pensada para transformar formação, certificações e competências em progressão profissional verificável — ligando aprendizagem, validação, reconhecimento e evolução num único ecossistema.</p>
+        <div class="actions"><a class="button" href="https://frontend-6mpw.onrender.com" target="_blank" rel="noopener">Aceder à plataforma ↗</a><a class="button alt" href="https://frontend-6mpw.onrender.com/softinsa-badges.apk">Download APK</a></div>
+        <div class="hero-meta"><div><strong>WEB + MOBILE</strong>Ecossistema digital</div><div><strong>4 PERFIS</strong>Experiências por função</div><div><strong>BADGES</strong>Competências verificadas</div></div>
+      </div>
+      <div class="hero-visual">
+        <div class="grid-bg"></div>
+        <div class="mockup web-shot"><div class="shot-note">🖥️ PLACEHOLDER — SCREENSHOT PRINCIPAL DO PORTAL WEB<br><br>ADICIONAR: dashboard final com métricas / badges / progresso.<br><br>Recomendação: screenshot real da aplicação, horizontal e com boa resolução.</div></div>
+        <div class="mockup phone"><div class="shot-note">📱 PLACEHOLDER — SCREENSHOT DA APP MOBILE<br><br>ADICIONAR: um ecrã forte da aplicação Flutter.</div></div>
+        <div class="floating">DIGITAL CREDENTIALS / VERIFIED SKILLS</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="numbers">
+    <div class="container number-grid">
+      <div class="metric"><b>01</b><span>Learning Path implementado no âmbito do projeto: <strong>Jornada Técnica</strong>.</span></div>
+      <div class="metric"><b>5</b><span>Níveis de progressão previstos por área: Júnior → Líder de conhecimento.</span></div>
+      <div class="metric"><b>4</b><span>Perfis principais: Consultor, Talent Manager, Service Line e Administrador.</span></div>
+      <div class="metric"><b>2</b><span>Experiências de produto: Portal Web + Aplicação Mobile para o consultor.</span></div>
+    </div>
+  </section>
+
+  <section id="desafio" class="section">
+    <div class="container problem-grid">
+      <div><p class="eyebrow">01 — O desafio</p><h2 class="section-title">MAKE SKILLS<br>VISIBLE.</h2></div>
+      <div>
+        <p class="lead">A Softinsa reconhece a importância da formação contínua e da certificação de competências. O desafio consistiu em criar uma solução que tornasse esse percurso mais estruturado, visível, verificável e motivador.</p>
+        <div class="pain-list">
+          <div class="pain"><span class="pain-no">01</span><div><h3>COMPETÊNCIAS POUCO VISÍVEIS</h3><p>Dificuldade em evidenciar e validar competências adquiridas através de formação e certificações.</p></div></div>
+          <div class="pain"><span class="pain-no">02</span><div><h3>FALTA DE GAMIFICAÇÃO</h3><p>Necessidade de incentivar a aprendizagem contínua através de pontos, progresso, conquistas e reconhecimento.</p></div></div>
+          <div class="pain"><span class="pain-no">03</span><div><h3>CREDENCIAIS NÃO PADRONIZADAS</h3><p>Ausência de uma forma uniforme de apresentar e verificar competências profissionais.</p></div></div>
+          <div class="pain"><span class="pain-no">04</span><div><h3>PROCESSOS A APROXIMAR</h3><p>O projeto procura agregar informação e racionalizar processos, aproximando colaboradores, gestão de talento e negócio.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solucao" class="section">
+    <div class="container">
+      <div class="solution-intro"><div><p class="eyebrow">02 — A solução</p><h2 class="section-title">ONE PLATFORM.<br>EVERY JOURNEY.</h2></div><p class="section-copy">O Badge Boost organiza a evolução profissional através de uma estrutura hierárquica de aprendizagem. Cada nível reúne requisitos e, quando estes são cumpridos e validados, é atribuído o respetivo badge.</p></div>
+      <div class="path">
+        <div class="path-item"><div><b>01</b>LEARNING<br>PATH</div></div>
+        <div class="path-item"><div><b>02</b>SERVICE<br>LINE</div></div>
+        <div class="path-item"><div><b>03</b>ÁREA</div></div>
+        <div class="path-item"><div><b>04</b>NÍVEL</div></div>
+        <div class="path-item"><div><b>05</b>REQUISITOS</div></div>
+        <div class="path-item"><div><b>06</b>BADGE</div></div>
+      </div>
+      <p class="solution-note">Exemplo: no Learning Path “Jornada Técnica”, uma área pode conter níveis Júnior, Intermédio, Sénior, Especialista e Líder de conhecimento. Cada nível pode reunir vários requisitos e dá origem a um badge quando todos os requisitos definidos são evidenciados.</p>
+    </div>
+  </section>
+
+  <section id="produto" class="section">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">03 — O produto</p><h2 class="section-title">WEB +<br>MOBILE.</h2></div><p class="section-copy">Duas experiências complementares: uma plataforma Web para gestão, validação e acompanhamento; e uma aplicação Mobile centrada no percurso do consultor.</p></div>
+      <div class="ecosystem">
+        <article class="product">
+          <div class="visual-slot large"><div class="photo-placeholder">🖥️ PLACEHOLDER DE IMAGEM<br><br><strong>ADICIONAR AQUI:</strong> screenshot do PORTAL WEB FINAL.<br><br>Ideal: dashboard completo com sidebar, indicadores, pedidos e badges.</div></div>
+          <div class="product-content"><h3>WEB PLATFORM</h3><p>Uma plataforma centralizada para gerir o ciclo de vida dos badges e dar diferentes níveis de acesso às funções envolvidas.</p><ul><li>Dashboards e métricas de progresso</li><li>Catálogo e gestão de badges</li><li>Validação de evidências</li><li>Gestão de utilizadores e permissões</li><li>Relatórios e exportação de dados</li><li>Informações e avisos</li></ul></div>
+        </article>
+        <article class="product">
+          <div class="visual-slot large"><div class="photo-placeholder">📱 PLACEHOLDER DE IMAGEM<br><br><strong>ADICIONAR AQUI:</strong> screenshot da APP MOBILE FINAL.<br><br>Ideal: ecrã de dashboard, catálogo ou detalhe de badge dentro de mockup de telemóvel.</div></div>
+          <div class="product-content"><h3>MOBILE EXPERIENCE</h3><p>Uma experiência dedicada ao consultor para acompanhar o seu desenvolvimento e interagir com os badges onde quer que esteja.</p><ul><li>Dashboard pessoal e progresso</li><li>Catálogo de badges</li><li>Consulta de requisitos</li><li>Upload de evidências</li><li>Histórico de pedidos e badges</li><li>Notificações e alertas</li></ul></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="workflow" class="section dark">
+    <div class="container">
+      <p class="eyebrow">04 — Workflow</p>
+      <h2 class="workflow-title">FROM EVIDENCE<br>TO RECOGNITION.</h2>
+      <div class="steps">
+        <div class="step"><span class="step-number">01</span><div><h3>CONSULTOR</h3><span class="status">OPEN → SUBMITTED</span></div><p>O consultor escolhe o badge e submete a candidatura, anexando as evidências necessárias para demonstrar o cumprimento dos requisitos.</p></div>
+        <div class="step"><span class="step-number">02</span><div><h3>TALENT MANAGER</h3><span class="status">EVIDENCE REVIEW</span></div><p>O Talent Manager analisa as evidências. Se estiverem corretas, o processo segue para a Service Line. Caso contrário, regressa ao consultor para retificação.</p></div>
+        <div class="step"><span class="step-number">03</span><div><h3>SERVICE LINE LEADER</h3><span class="status">FINAL VALIDATION</span></div><p>O responsável da Service Line realiza a validação final da candidatura dentro da sua área de responsabilidade.</p></div>
+        <div class="step"><span class="step-number">04</span><div><h3>BADGE</h3><span class="status">CLOSED</span></div><p>Em caso de aprovação, o badge fica disponível para publicação e o consultor é notificado. Em caso de rejeição, recebe a respetiva comunicação e feedback.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">05 — Funcionalidades</p><h2 class="section-title">MORE THAN<br>A BADGE.</h2></div><p class="section-copy">O objetivo foi construir mais do que um catálogo de credenciais: uma plataforma de acompanhamento, validação e reconhecimento do desenvolvimento profissional.</p></div>
+      <div class="features-grid">
+        <article class="feature"><span class="feature-no">01</span><h3>GAMIFICATION</h3><p>Sistema de pontos associados a badges, conquistas especiais, progresso e rankings para incentivar a evolução.</p></article>
+        <article class="feature"><span class="feature-no">02</span><h3>EVIDENCE</h3><p>Upload e validação de certificados, diplomas, relatórios e outras evidências associadas aos requisitos.</p></article>
+        <article class="feature"><span class="feature-no">03</span><h3>PUBLIC VERIFY</h3><p>Página pública por badge e link único para permitir a verificação da credencial e das competências certificadas.</p></article>
+        <article class="feature"><span class="feature-no">04</span><h3>DASHBOARDS</h3><p>Métricas visuais de progresso e indicadores relevantes para consultores, Talent Managers e Service Lines.</p></article>
+        <article class="feature"><span class="feature-no">05</span><h3>REPORTING</h3><p>Relatórios e exportações de pedidos, badges, consultores, aprovações e outros dados de gestão.</p></article>
+        <article class="feature"><span class="feature-no">06</span><h3>RECOMMENDATIONS</h3><p>Sugestões de próximos badges com base no percurso e nos níveis de evolução já alcançados.</p></article>
+        <article class="feature"><span class="feature-no">07</span><h3>CERTIFICATES</h3><p>Download de certificados personalizados em PDF associados aos badges obtidos.</p></article>
+        <article class="feature"><span class="feature-no">08</span><h3>NOTIFICATIONS</h3><p>Confirmações de candidatura, aprovação ou rejeição, alertas de expiração e lembretes de objetivos.</p></article>
+        <article class="feature"><span class="feature-no">09</span><h3>RGPD</h3><p>Aceitação de termos para publicação e partilha de badges e preocupação com segurança e tratamento da informação.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">06 — Perfis</p><h2 class="section-title">ONE SYSTEM.<br>FOUR PERSPECTIVES.</h2></div><p class="section-copy">Cada perfil tem responsabilidades e informação própria, mantendo o processo de validação distribuído e auditável.</p></div>
+      <div class="roles">
+        <article class="role"><span class="role-code">01 / CONSULTOR</span><h3>EVOLVE.</h3><p>Consulta badges, acompanha o seu percurso, submete evidências, segue pedidos, recebe notificações e pode partilhar as suas credenciais.</p></article>
+        <article class="role"><span class="role-code">02 / TALENT MANAGER</span><h3>VALIDATE.</h3><p>Tem acesso às submissões e verifica as evidências, acompanhando o estado dos processos e respetivo histórico.</p></article>
+        <article class="role"><span class="role-code">03 / SERVICE LINE</span><h3>DECIDE.</h3><p>Acompanha a sua Service Line, realiza a validação final dos badges da respetiva área e consulta rankings e relatórios.</p></article>
+        <article class="role"><span class="role-code">04 / ADMIN</span><h3>CONTROL.</h3><p>Gere utilizadores, permissões, Learning Paths, Service Lines, áreas, níveis, requisitos, badges, pontos e configurações.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">07 — O que acontece por trás</p><h2 class="section-title">DATA.<br>RULES.<br>TRACEABILITY.</h2></div><p class="section-copy">A experiência visual é suportada por um modelo de informação pensado para representar a estrutura de aprendizagem, os requisitos, as candidaturas, as validações e o histórico do processo.</p></div>
+      <div class="split">
+        <article class="info-card"><p class="eyebrow">Estrutura de aprendizagem</p><h3>LEARNING PATH → BADGE</h3><p>A base conceptual permite suportar mais Learning Paths no futuro, mantendo a relação entre Service Lines, áreas, níveis e requisitos.</p><ul><li>Jornada Técnica como Learning Path do projeto</li><li>Service Lines e áreas organizam os percursos</li><li>Cada nível reúne requisitos</li><li>O cumprimento dos requisitos origina um badge</li></ul></article>
+        <article class="info-card"><p class="eyebrow">Processo auditável</p><h3>EVERY DECISION<br>LEAVES A TRACE.</h3><p>As decisões de aprovação devem ser registadas e auditáveis, mantendo o histórico de feedbacks e o responsável por cada validação.</p><ul><li>Estado do pedido em tempo real</li><li>Registo de quem validou e quando</li><li>Histórico de candidaturas</li><li>Feedback em aprovações, rejeições e devoluções</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="processo" class="section">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">08 — Processo de desenvolvimento</p><h2 class="section-title">FROM IDEA<br>TO PRODUCT.</h2></div><p class="section-copy">Um projeto multidisciplinar construído ao longo de várias áreas: análise, usabilidade, modelação de dados, desenvolvimento Web e Mobile e deployment.</p></div>
+      <div class="process">
+        <article class="process-item"><span>01 — ANALYSIS</span><h3>REQUISITOS</h3><p>Levantamento de necessidades, regras de negócio e perfis.</p></article>
+        <article class="process-item"><span>02 — UX/UI</span><h3>FIGMA</h3><p>Prototipagem e desenho das interfaces e experiências.</p></article>
+        <article class="process-item"><span>03 — SYSTEMS</span><h3>USE CASES</h3><p>Modelação das interações e dos fluxos principais.</p></article>
+        <article class="process-item"><span>04 — DATA</span><h3>POWERDESIGNER</h3><p>Modelação conceptual, lógica e estrutura da base de dados.</p></article>
+        <article class="process-item"><span>05 — BUILD</span><h3>WEB + MOBILE</h3><p>React, JavaScript, Node.js, Express e Flutter.</p></article>
+        <article class="process-item"><span>06 — DEPLOY</span><h3>RENDER</h3><p>Aplicações e serviços publicados em ambiente cloud.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="tecnologia" class="section tech">
+    <div class="container tech-grid">
+      <div>
+        <p class="eyebrow">09 — Stack tecnológica</p>
+        <h2 class="section-title">ENGINEERED<br>AS ONE.</h2>
+        <p class="section-copy" style="margin-top:24px">As diferentes tecnologias foram integradas para criar uma solução coerente entre interface, API, dados e experiência mobile.</p>
+        <div class="stack">
+          <div class="tech-item"><b>WEB</b><span>React + JavaScript</span></div>
+          <div class="tech-item"><b>BACKEND</b><span>Node.js + Express</span></div>
+          <div class="tech-item"><b>DATABASE</b><span>PostgreSQL</span></div>
+          <div class="tech-item"><b>MOBILE</b><span>Flutter</span></div>
+          <div class="tech-item"><b>MODELLING</b><span>PowerDesigner</span></div>
+          <div class="tech-item"><b>DESIGN</b><span>Figma</span></div>
+          <div class="tech-item"><b>DEPLOYMENT</b><span>Render</span></div>
+          <div class="tech-item"><b>API</b><span>Services / Data Layer</span></div>
+        </div>
+      </div>
+      <div class="architecture"><div class="architecture-inner"><div class="node">WEB PLATFORM — REACT / JAVASCRIPT</div><div class="node">MOBILE APP — FLUTTER</div><div class="arrow">↓</div><div class="node accent">NODE.JS + EXPRESS — API</div><div class="arrow">↓</div><div class="node">POSTGRESQL — DATABASE</div><div class="arrow">↕</div><div class="node">RENDER — DEPLOYMENT</div></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">10 — Engenharia & design</p><h2 class="section-title">BEHIND THE<br>INTERFACE.</h2></div><p class="section-copy">Aqui entra a prova visual do trabalho desenvolvido: protótipos, modelação, casos de uso e interfaces finais.</p></div>
+      <div class="gallery">
+        <div class="gallery-item main"><div class="photo-placeholder">🎨 PLACEHOLDER — FIGMA / UI FINAL<br><br>ADICIONAR AQUI: screenshot grande do ficheiro Figma ou composição com várias telas.</div><div class="caption">01 — Design / Prototipagem</div></div>
+        <div class="gallery-item"><div class="photo-placeholder">🗄️ PLACEHOLDER — POWERDESIGNER<br><br>ADICIONAR AQUI: modelo de dados / diagrama principal.</div><div class="caption">02 — Data Model</div></div>
+        <div class="gallery-item"><div class="photo-placeholder">🔗 PLACEHOLDER — CASOS DE USO<br><br>ADICIONAR AQUI: diagrama de casos de uso.</div><div class="caption">03 — System Analysis</div></div>
+        <div class="gallery-item"><div class="photo-placeholder">🖥️ PLACEHOLDER — WEB SCREENSHOT<br><br>ADICIONAR AQUI: ecrã final do portal.</div><div class="caption">04 — Web Application</div></div>
+        <div class="gallery-item"><div class="photo-placeholder">📱 PLACEHOLDER — MOBILE SCREENSHOT<br><br>ADICIONAR AQUI: ecrã final da app Flutter.</div><div class="caption">05 — Mobile Application</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">11 — Requisitos e diferenciação</p><h2 class="section-title">READY FOR<br>EVOLUTION.</h2></div><p class="section-copy">A solução foi pensada para responder aos requisitos definidos e manter espaço para crescimento futuro.</p></div>
+      <div class="spec-grid">
+        <article class="spec"><strong>SCALABILITY</strong><h3>MAIS LEARNING PATHS</h3><p>A base de dados deve permitir acrescentar novos Learning Paths no futuro.</p></article>
+        <article class="spec"><strong>PUBLIC</strong><h3>BADGES VERIFICÁVEIS</h3><p>Cada badge pode ter uma página pública e um link único de verificação.</p></article>
+        <article class="spec"><strong>GOVERNANCE</strong><h3>RGPD & SEGURANÇA</h3><p>Inclui aceitação de termos, controlo de acesso e comunicação cliente-servidor via HTTPS.</p></article>
+        <article class="spec"><strong>REPORTING</strong><h3>KPIs & EXPORTAÇÃO</h3><p>Dashboards com percentagens, evolução mensal, badges por período, níveis e utilizadores registados.</p></article>
+        <article class="spec"><strong>COMMUNICATION</strong><h3>NOTIFICAÇÕES</h3><p>Emails e avisos associados a candidaturas, validações, aprovações, rejeições e expirações.</p></article>
+        <article class="spec"><strong>FUTURE</strong><h3>3 IDIOMAS</h3><p>Como bónus, a plataforma foi especificada para suportar Português, Inglês e Espanhol.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">12 — Visão final</p><h2 class="section-title">LEARNING<br>SHOULD BE<br>VISIBLE.</h2></div><p class="section-copy" style="color:#aeb8c5">O Badge Boost procura aproximar formação, competências e negócio através de uma experiência digital que torna a evolução profissional mensurável e reconhecível.</p></div>
+      <div class="split">
+        <div class="info-card" style="background:#111c2c;border-color:rgba(255,255,255,.12);color:#fff"><p class="eyebrow" style="color:#d8ff4e">Para o consultor</p><h3>EVOLVE WITH PURPOSE.</h3><p style="color:#aeb8c5">Ver o que já conquistou, perceber o que falta e transformar aprendizagem em reconhecimento.</p></div>
+        <div class="info-card" style="background:#111c2c;border-color:rgba(255,255,255,.12);color:#fff"><p class="eyebrow" style="color:#d8ff4e">Para a organização</p><h3>MAKE TALENT VISIBLE.</h3><p style="color:#aeb8c5">Estruturar competências, validar conhecimento, acompanhar evolução e reforçar a visibilidade do talento interno.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><p class="eyebrow" style="color:#d8ff4e">Projeto de Integração</p><h2>FROM LEARNING<br>TO <span>RECOGNITION.</span></h2><p class="footer-copy">Plataforma de Gestão de Badges desenvolvida no contexto académico para a Softinsa, integrando análise de sistemas, usabilidade, bases de dados, desenvolvimento Web e desenvolvimento Mobile.</p><div class="actions" style="margin-top:26px"><a class="button" style="background:var(--lime);color:var(--ink)" href="https://frontend-6mpw.onrender.com" target="_blank" rel="noopener">Aceder à plataforma ↗</a></div></div>
+      <div><p class="eyebrow" style="color:#d8ff4e">A equipa</p><div class="team"><div class="member">Ana Chaves</div><div class="member">Carolina Romano</div><div class="member">Gabriel Silva</div><div class="member">Joyce Lopes</div></div><p class="footer-copy" style="font-size:.77rem">PLACEHOLDER OPCIONAL: adicionar fotografia da equipa, logótipos da instituição e/ou responsabilidades individuais.</p></div>
+    </div>
+    <div class="footer-bottom"><span>BADGE BOOST — SOFTINSA</span><span>ENGENHARIA INFORMÁTICA • POLITÉCNICO DE VISEU</span></div>
+  </div>
+</footer>
+
+</body>
+</html>
