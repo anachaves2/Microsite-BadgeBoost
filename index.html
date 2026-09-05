@@ -367,6 +367,11 @@ h1,h2,h3,h4{font-family:Oswald,Impact,sans-serif;text-transform:uppercase;line-h
         <article class="process-item"><span>05 — BUILD</span><h3>WEB + MOBILE</h3><p>React, JavaScript, Node.js, Express e Flutter.</p></article>
         <article class="process-item"><span>06 — DEPLOY</span><h3>RENDER</h3><p>Aplicações e serviços publicados em ambiente cloud.</p></article>
       </div>
+      <p class="eyebrow" style="display:block;margin-top:55px">Desafios técnicos ao longo do projeto</p>
+      <div class="split" style="margin-top:18px">
+        <article class="info-card"><p class="eyebrow">Robustez a dados inesperados</p><h3>NEM TUDO O QUE<br>A API DEVOLVE<br>É PREVISÍVEL.</h3><p>Um badge legitimamente sem data de expiração chegou a apagar, sem aviso, toda a lista de badges de um consultor na app Mobile — um único registo bastava para deitar fora a lista inteira.</p><ul><li>Parsing corrigido para tratar campos opcionais da API</li><li>Sincronização passou a isolar itens problemáticos em vez de falhar tudo de uma vez</li><li>Mesmo cuidado replicado a notificações e catálogo de badges</li></ul></article>
+        <article class="info-card"><p class="eyebrow">Evolução em produção</p><h3>SCHEMA E SESSÃO,<br>EM MOVIMENTO.</h3><p>Com o projeto já em uso, foi preciso alterar a estrutura da base de dados sem perder dados existentes, e cuidar da expiração de sessões sem interromper quem estava a usar a app.</p><ul><li>Migrações de base de dados aplicadas em produção sem perda de dados</li><li>Deteção de sessão expirada isolada das ações ativas do utilizador</li><li>Correção de uma associação de dados mal configurada, identificada em auditoria de logs</li></ul></article>
+      </div>
     </div>
   </section>
 
@@ -437,7 +442,7 @@ h1,h2,h3,h4{font-family:Oswald,Impact,sans-serif;text-transform:uppercase;line-h
   <div class="container">
     <div class="footer-grid">
       <div><p class="eyebrow" style="color:#d8ff4e">Projeto de Integração</p><h2>FROM LEARNING<br>TO <span>RECOGNITION.</span></h2><p class="footer-copy">Plataforma de Gestão de Badges desenvolvida no contexto académico para a Softinsa, integrando análise de sistemas, usabilidade, bases de dados, desenvolvimento Web e desenvolvimento Mobile.</p><div class="actions" style="margin-top:26px"><a class="button" style="background:var(--lime);color:var(--ink)" href="https://frontend-6mpw.onrender.com" target="_blank" rel="noopener">Aceder à plataforma ↗</a></div></div>
-      <div><p class="eyebrow" style="color:#d8ff4e">A equipa</p><div class="team"><div class="member">Ana Chaves</div><div class="member">Carolina Romano</div><div class="member">Gabriel Silva</div><div class="member">Joyce Lopes</div></div><p class="footer-copy" style="font-size:.77rem">PLACEHOLDER OPCIONAL: adicionar fotografia da equipa, logótipos da instituição e/ou responsabilidades individuais.</p></div>
+      <div><p class="eyebrow" style="color:#d8ff4e">A equipa</p><div class="team"><div class="member">Ana Chaves</div><div class="member">Carolina Romano</div><div class="member">Gabriel Silva</div><div class="member">Joyce Lopes</div></div></div>
     </div>
     <div class="footer-bottom"><span>BADGE BOOST — SOFTINSA</span><span>ENGENHARIA INFORMÁTICA • POLITÉCNICO DE VISEU</span></div>
   </div>
